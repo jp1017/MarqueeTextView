@@ -198,13 +198,16 @@ public class MarqueeTextView extends View {
 
 
     void invalidateAfter(long delay) {
-        postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                invalidate();
-            }
-        }, delay);
+        removeCallbacks(invalidateRunnable);
+        postDelayed(invalidateRunnable, delay);
     }
+
+    Runnable invalidateRunnable = new Runnable() {
+        @Override
+        public void run() {
+            invalidate();
+        }
+    };
 
 
     @Override
