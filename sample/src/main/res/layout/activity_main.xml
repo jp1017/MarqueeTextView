@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context="uk.co.deanwild.marqueetextviewsample.MainActivity">
 
-    <uk.co.deanwild.marqueetextviewsample.MarqueeTextView
+    <uk.co.deanwild.marqueetextview.MarqueeTextView
         app:pauseDuration="3000"
         android:text="Lorem ipsum dolor sit amet."
         app:showEdgeEffect="true"
@@ -21,7 +21,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="42sp" />
 
-    <uk.co.deanwild.marqueetextviewsample.MarqueeTextView
+    <uk.co.deanwild.marqueetextview.MarqueeTextView
         app:pauseDuration="3000"
         android:text="Lorem ipsum dolor sit amet."
         app:showEdgeEffect="true"
@@ -34,7 +34,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="42sp" />
 
-    <uk.co.deanwild.marqueetextviewsample.MarqueeTextView
+    <uk.co.deanwild.marqueetextview.MarqueeTextView
         app:pauseDuration="3000"
         android:text="Lorem ipsum dolor sit amet."
         app:showEdgeEffect="true"
@@ -47,7 +47,7 @@
         android:textColor="@color/colorAccent"
         android:textSize="42sp" />
 
-    <uk.co.deanwild.marqueetextviewsample.MarqueeTextView
+    <uk.co.deanwild.marqueetextview.MarqueeTextView
         app:pauseDuration="3000"
         android:text="Lorem ipsum dolor sit amet."
         app:showEdgeEffect="true"

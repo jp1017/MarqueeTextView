@@ -1,4 +1,4 @@
-package uk.co.deanwild.marqueetextviewsample;
+package uk.co.deanwild.marqueetextview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
