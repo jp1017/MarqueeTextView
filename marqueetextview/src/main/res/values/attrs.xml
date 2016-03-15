@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="PieChart">
+        <attr name="marqueeEnabled" format="boolean" />
+        <attr name="showEdgeEffect" format="boolean" />
+        <attr name="edgeEffectWidth" format="integer" />
+        <attr name="edgeEffectColor" format="color" />
+        <attr name="pauseDuration" format="integer" />
+    </declare-styleable>
+</resources>

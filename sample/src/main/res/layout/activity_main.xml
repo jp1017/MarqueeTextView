@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context="uk.co.deanwild.marqueetextviewsample.MainActivity">
+
+    <uk.co.deanwild.marqueetextviewsample.MarqueeTextView
+        app:pauseDuration="3000"
+        android:text="Lorem ipsum dolor sit amet."
+        app:showEdgeEffect="true"
+        app:edgeEffectColor="#fff"
+        app:edgeEffectWidth="20"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="42sp" />
+
+    <uk.co.deanwild.marqueetextviewsample.MarqueeTextView
+        app:pauseDuration="3000"
+        android:text="Lorem ipsum dolor sit amet."
+        app:showEdgeEffect="true"
+        app:edgeEffectColor="#fff"
+        app:edgeEffectWidth="20"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="42sp" />
+
+    <uk.co.deanwild.marqueetextviewsample.MarqueeTextView
+        app:pauseDuration="3000"
+        android:text="Lorem ipsum dolor sit amet."
+        app:showEdgeEffect="true"
+        app:edgeEffectColor="#fff"
+        app:edgeEffectWidth="20"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="42sp" />
+
+    <uk.co.deanwild.marqueetextviewsample.MarqueeTextView
+        app:pauseDuration="3000"
+        android:text="Lorem ipsum dolor sit amet."
+        app:showEdgeEffect="true"
+        app:edgeEffectColor="#000"
+        app:edgeEffectWidth="20"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="42sp" />
+
+
+
+
+</LinearLayout>
