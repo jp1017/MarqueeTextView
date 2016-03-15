@@ -21,7 +21,7 @@ import uk.co.deanwild.marqueetextview.R;
 public class MarqueeTextView extends View {
 
     static final int DEFAULT_SPEED = 10;
-    static int DEFAULT_PAUSE_DURATION = 3000;
+    static int DEFAULT_PAUSE_DURATION = 10000;
     static final int DEFAULT_EDGE_EFFECT_WIDTH = 20;
     static final int DEFAULT_EDGE_EFFECT_COLOR = Color.WHITE;
 
@@ -124,12 +124,14 @@ public class MarqueeTextView extends View {
 
             int textWidth = textBounds.width();
 
+            float topOffset = textBounds.height() - textBounds.bottom;
+
             if (textWidth < viewWidth) { // text can fit in view, no marquee needed
 
                 animationRunning = false;
 
                 float leftMargin = (viewWidth - textWidth) / 2;
-                canvas.drawText(text.toString(), leftMargin, textBounds.height(), textPaint);
+                canvas.drawText(text.toString(), leftMargin, topOffset, textPaint);
 
             } else { // not enough room, we must animate it
 
@@ -143,7 +145,7 @@ public class MarqueeTextView extends View {
 
                 }
 
-                canvas.drawText(text.toString(), xOffset, textBounds.height(), textPaint);
+                canvas.drawText(text.toString(), xOffset, topOffset, textPaint);
 
                 if (showEdgeEffect) {
 
@@ -228,7 +230,7 @@ public class MarqueeTextView extends View {
             // Parent has told us how big to be. So be it.
             height = heightSize;
         } else {
-            height = textBounds.height() + textBounds.bottom;
+            height = (int) textSize;
         }
 
         setMeasuredDimension(width, height);

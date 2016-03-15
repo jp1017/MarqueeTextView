@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#fff"
     android:orientation="vertical"
     tools:context="uk.co.deanwild.marqueetextviewsample.MainActivity">
 
     <uk.co.deanwild.marqueetextview.MarqueeTextView
-        app:pauseDuration="3000"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:text="Lorem ipsum dolor sit amet."
-        app:showEdgeEffect="true"
+        android:textColor="@color/colorAccent"
+
+        android:textSize="42sp"
         app:edgeEffectColor="#fff"
         app:edgeEffectWidth="20"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/colorAccent"
-        android:textSize="42sp" />
-
-    <uk.co.deanwild.marqueetextview.MarqueeTextView
         app:pauseDuration="3000"
-        android:text="Lorem ipsum dolor sit amet."
-        app:showEdgeEffect="true"
-        app:edgeEffectColor="#fff"
-        app:edgeEffectWidth="20"
+        app:showEdgeEffect="true" />
 
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/colorAccent"
-        android:textSize="42sp" />
-
-    <uk.co.deanwild.marqueetextview.MarqueeTextView
-        app:pauseDuration="3000"
-        android:text="Lorem ipsum dolor sit amet."
-        app:showEdgeEffect="true"
-        app:edgeEffectColor="#fff"
-        app:edgeEffectWidth="20"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/colorAccent"
-        android:textSize="42sp" />
-
-    <uk.co.deanwild.marqueetextview.MarqueeTextView
-        app:pauseDuration="3000"
-        android:text="Lorem ipsum dolor sit amet."
-        app:showEdgeEffect="true"
-        app:edgeEffectColor="#000"
-        app:edgeEffectWidth="20"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/colorAccent"
-        android:textSize="42sp" />
+        android:orientation="horizontal">
 
 
+        <uk.co.deanwild.marqueetextview.MarqueeTextView
+            android:background="#999"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Karting"
+            android:textColor="#fff"
+
+            android:textSize="24sp"
+            app:edgeEffectColor="#fff"
+            app:edgeEffectWidth="20"
+            app:pauseDuration="3000"
+            app:showEdgeEffect="true" />
+
+
+        <uk.co.deanwild.marqueetextview.MarqueeTextView
+            android:layout_width="0dp"
+            android:background="#999"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Football"
+            android:textColor="#fff"
+
+            android:textSize="24sp"
+            app:edgeEffectColor="#fff"
+            app:edgeEffectWidth="20"
+            app:pauseDuration="3000"
+            app:showEdgeEffect="true" />
+
+
+
+
+
+    </LinearLayout>
 
 
 </LinearLayout>
