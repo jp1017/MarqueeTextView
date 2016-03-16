@@ -94,7 +94,7 @@ public class MarqueeTextView extends View {
                 R.attr.edgeEffectWidth,
                 R.attr.edgeEffectColor,
                 R.attr.pauseDuration,
-                R.attr.forceMarqueed
+                R.attr.forceMarquee
         };
 
         TypedArray ta = getContext().obtainStyledAttributes(attrs, attrsArray);

@@ -5,6 +5,6 @@
         <attr name="edgeEffectWidth" format="integer" />
         <attr name="edgeEffectColor" format="color" />
         <attr name="pauseDuration" format="integer" />
-        <attr name="forceMarqueed" format="boolean" />
+        <attr name="forceMarquee" format="boolean" />
     </declare-styleable>
 </resources>
