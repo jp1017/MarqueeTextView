@@ -20,7 +20,7 @@ public class MarqueeTextView extends View {
 
     static final int DEFAULT_SPEED = 10;
     static int DEFAULT_PAUSE_DURATION = 10000;
-    static final int DEFAULT_EDGE_EFFECT_WIDTH = 20;
+    static final int DEFAULT_EDGE_EFFECT_WIDTH = 10;
     static final int DEFAULT_EDGE_EFFECT_COLOR = Color.WHITE;
 
     boolean marqueeEnabled = true;
@@ -310,6 +310,16 @@ public class MarqueeTextView extends View {
         renewPaint();
         animationRunning = false;
         requestLayout();
+    }
+
+    public int getEdgeEffectColor() {
+        return edgeEffectColor;
+    }
+
+    public void setEdgeEffectColor(int edgeEffectColor) {
+        this.edgeEffectColor = edgeEffectColor;
+        renewPaint();
+        invalidate();
     }
 
 }
