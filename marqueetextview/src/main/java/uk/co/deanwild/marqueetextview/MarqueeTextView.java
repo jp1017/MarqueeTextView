@@ -13,8 +13,6 @@ import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
 
-import uk.co.deanwild.marqueetextview.R;
-
 /**
  * Created by deanwild on 14/03/16.
  */
@@ -26,6 +24,7 @@ public class MarqueeTextView extends View {
     static final int DEFAULT_EDGE_EFFECT_COLOR = Color.WHITE;
 
     boolean marqueeEnabled = true;
+    boolean forceMarquee = false;
     int textColor = Color.BLACK;
     float textSize = getResources().getDisplayMetrics().scaledDensity * 20.0f;
     int pauseDuration = DEFAULT_PAUSE_DURATION;
@@ -36,7 +35,6 @@ public class MarqueeTextView extends View {
 
     CharSequence text;
 
-    int xOffset;
     double wrapAroundPoint;
     boolean animationRunning = false;
     boolean paused = false;
@@ -46,10 +44,13 @@ public class MarqueeTextView extends View {
     Paint leftPaint;
     Paint rightPaint;
 
+
     Rect textBounds;
     RectF leftRect;
     RectF rightRect;
 
+    int topOffset;
+    int xOffset;
 
     public static void setGlobalDefaultPauseDuration(int pauseDuration) {
         DEFAULT_PAUSE_DURATION = pauseDuration;
@@ -76,13 +77,9 @@ public class MarqueeTextView extends View {
             readAttrs(attrs);
         }
 
-        renewPaint();
-
         textBounds = new Rect();
 
-        if (text != null) {
-            setText(text);
-        }
+        setText(text);
 
     }
 
@@ -96,7 +93,8 @@ public class MarqueeTextView extends View {
                 R.attr.showEdgeEffect,
                 R.attr.edgeEffectWidth,
                 R.attr.edgeEffectColor,
-                R.attr.pauseDuration
+                R.attr.pauseDuration,
+                R.attr.forceMarqueed
         };
 
         TypedArray ta = getContext().obtainStyledAttributes(attrs, attrsArray);
@@ -109,10 +107,10 @@ public class MarqueeTextView extends View {
         edgeEffectWidth = ta.getInt(5, edgeEffectWidth);
         edgeEffectColor = ta.getColor(6, edgeEffectColor);
         pauseDuration = ta.getInt(7, pauseDuration);
+        forceMarquee = ta.getBoolean(8, forceMarquee);
 
         ta.recycle();
     }
-
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -124,9 +122,7 @@ public class MarqueeTextView extends View {
 
             int textWidth = textBounds.width();
 
-            float topOffset = textBounds.height() - textBounds.bottom;
-
-            if (textWidth < viewWidth) { // text can fit in view, no marquee needed
+            if (textWidth < viewWidth && !forceMarquee) { // text can fit in view, no marquee needed
 
                 animationRunning = false;
 
@@ -169,7 +165,7 @@ public class MarqueeTextView extends View {
                     if (wrapped && xOffset <= 0) {
                         wrapped = false;
 
-                        if(pauseDuration > 0) {
+                        if (pauseDuration > 0) {
                             xOffset = 0;
                             pause();
                         }
@@ -233,11 +229,15 @@ public class MarqueeTextView extends View {
             // Parent has told us how big to be. So be it.
             height = heightSize;
         } else {
-            height = (int) textSize;
+
+            TextPaint paint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
+            paint.density = getResources().getDisplayMetrics().density;
+            paint.setTextSize(textSize);
+
+            height = (int) (Math.abs(paint.ascent()) + Math.abs(paint.descent()));
         }
 
         setMeasuredDimension(width, height);
-
         renewPaint();
     }
 
@@ -278,6 +278,11 @@ public class MarqueeTextView extends View {
 
         leftRect = new RectF(0, 0, absEdgeEffectWidth, getMeasuredHeight());
         rightRect = new RectF(rightOffset, 0, getMeasuredWidth(), getMeasuredHeight());
+
+        textPaint.getTextBounds(text.toString(), 0, text.length(), textBounds);
+
+        int viewheight = getMeasuredHeight();
+        topOffset = (int) (viewheight / 2 - ((textPaint.descent() + textPaint.ascent()) / 2));
     }
 
     public void setSpeed(int speed) {
@@ -285,8 +290,11 @@ public class MarqueeTextView extends View {
     }
 
     public void setText(CharSequence text) {
+
+        if (text == null)
+            text = "";
+
         this.text = text;
-        textPaint.getTextBounds(text.toString(), 0, text.length(), textBounds);
         animationRunning = false;
         requestLayout();
     }
@@ -300,7 +308,6 @@ public class MarqueeTextView extends View {
     public void setTextSize(float textSize) {
         this.textSize = textSize;
         renewPaint();
-        textPaint.getTextBounds(text.toString(), 0, text.length(), textBounds);
         animationRunning = false;
         requestLayout();
     }
