@@ -9,14 +9,16 @@
     tools:context="uk.co.deanwild.marqueetextviewsample.MainActivity">
 
     <uk.co.deanwild.marqueetextview.MarqueeTextView
+        android:id="@+id/tv1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#800"
+        android:background="@color/red"
         android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
         android:textColor="#fff"
         android:textSize="42sp"
+        app:edgeEffectColor="@color/red"
         app:pauseDuration="3000"
-        app:showEdgeEffect="false" />
+        app:edgeEffectEnabled="true" />
 
 
     <TextView
@@ -47,7 +49,7 @@
             app:edgeEffectColor="#fff"
             app:edgeEffectWidth="20"
             app:pauseDuration="3000"
-            app:showEdgeEffect="true" />
+            app:edgeEffectEnabled="true" />
 
 
         <uk.co.deanwild.marqueetextview.MarqueeTextView
@@ -62,7 +64,7 @@
             app:edgeEffectColor="#fff"
             app:edgeEffectWidth="20"
             app:pauseDuration="3000"
-            app:showEdgeEffect="true" />
+            app:edgeEffectEnabled="true" />
 
 
     </LinearLayout>
@@ -96,5 +98,16 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/button_change_colour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change colour" />
 
+
+    <Button
+        android:id="@+id/toggleEdgeEffect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="toggle edge effect" />
 </LinearLayout>

@@ -18,7 +18,7 @@ import android.view.View;
  */
 public class MarqueeTextView extends View {
 
-    static final int DEFAULT_SPEED = 10;
+    static final int DEFAULT_SPEED = 5;
     static int DEFAULT_PAUSE_DURATION = 10000;
     static final int DEFAULT_EDGE_EFFECT_WIDTH = 10;
     static final int DEFAULT_EDGE_EFFECT_COLOR = Color.WHITE;
@@ -29,7 +29,8 @@ public class MarqueeTextView extends View {
     float textSize = getResources().getDisplayMetrics().scaledDensity * 20.0f;
     int pauseDuration = DEFAULT_PAUSE_DURATION;
     int speed = DEFAULT_SPEED;
-    boolean showEdgeEffect = false;
+
+    boolean edgeEffectEnabled = false;
     int edgeEffectWidth = DEFAULT_EDGE_EFFECT_WIDTH;
     int edgeEffectColor = DEFAULT_EDGE_EFFECT_COLOR;
 
@@ -90,7 +91,7 @@ public class MarqueeTextView extends View {
                 android.R.attr.textColor,
                 android.R.attr.text,
                 R.attr.marqueeEnabled,
-                R.attr.showEdgeEffect,
+                R.attr.edgeEffectEnabled,
                 R.attr.edgeEffectWidth,
                 R.attr.edgeEffectColor,
                 R.attr.pauseDuration,
@@ -103,7 +104,7 @@ public class MarqueeTextView extends View {
         textColor = ta.getColor(1, textColor); // 3 is the index of the array of the textColor attribute
         text = ta.getText(2);
         marqueeEnabled = ta.getBoolean(3, marqueeEnabled);
-        showEdgeEffect = ta.getBoolean(4, showEdgeEffect);
+        edgeEffectEnabled = ta.getBoolean(4, edgeEffectEnabled);
         edgeEffectWidth = ta.getInt(5, edgeEffectWidth);
         edgeEffectColor = ta.getColor(6, edgeEffectColor);
         pauseDuration = ta.getInt(7, pauseDuration);
@@ -143,7 +144,7 @@ public class MarqueeTextView extends View {
 
                 canvas.drawText(text.toString(), xOffset, topOffset, textPaint);
 
-                if (showEdgeEffect) {
+                if (edgeEffectEnabled) {
 
                     if (xOffset < 0 || pauseDuration <= 0) {
                         canvas.drawRect(leftRect, leftPaint);
@@ -312,14 +313,29 @@ public class MarqueeTextView extends View {
         requestLayout();
     }
 
-    public int getEdgeEffectColor() {
-        return edgeEffectColor;
+
+    public void setEdgeEffectColorRes(int coloRes) {
+        setEdgeEffectColor(getContext().getColor(coloRes));
     }
 
     public void setEdgeEffectColor(int edgeEffectColor) {
         this.edgeEffectColor = edgeEffectColor;
+
         renewPaint();
-        invalidate();
+
+        if (paused)
+            invalidate();
+    }
+
+    public boolean isEdgeEffectEnabled() {
+        return edgeEffectEnabled;
+    }
+
+    public void setEdgeEffectEnabled(boolean edgeEffectEnabled) {
+        this.edgeEffectEnabled = edgeEffectEnabled;
+
+        if (paused)
+            invalidate();
     }
 
 }
