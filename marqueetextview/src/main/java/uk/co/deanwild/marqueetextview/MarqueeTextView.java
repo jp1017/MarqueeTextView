@@ -9,6 +9,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.support.v4.content.ContextCompat;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.View;
@@ -315,7 +316,7 @@ public class MarqueeTextView extends View {
 
 
     public void setEdgeEffectColorRes(int coloRes) {
-        setEdgeEffectColor(getContext().getColor(coloRes));
+        setEdgeEffectColor(ContextCompat.getColor(getContext(), coloRes));
     }
 
     public void setEdgeEffectColor(int edgeEffectColor) {
