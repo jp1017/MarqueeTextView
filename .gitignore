@@ -1,3 +1,6 @@
+.DS_Store
+/captures
+
 # Built application files
 *.apk
 *.ap_
@@ -7,6 +10,7 @@
 
 # Java class files
 *.class
+.idea
 
 # Generated files
 bin/
@@ -25,8 +29,5 @@ proguard/
 # Log Files
 *.log
 
-# Android Studio Navigation editor temp files
-.navigation/
-
-# Android Studio captures folder
-captures/
+# iml files
+*.iml
